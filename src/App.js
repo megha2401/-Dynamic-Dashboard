@@ -1,7 +1,6 @@
 import React from "react";
 import { DashboardProvider } from "./Components/DashboardContext";
 import Dashboard from "./Components/Dashboard";
-// import Search from "./Components/Search";
 import "./styles.css";
 import NavBar from "./Components/Navbar";
 
