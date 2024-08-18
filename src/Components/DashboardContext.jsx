@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useEffect } from "react";
 
 export const DashboardContext = createContext();
 
@@ -48,6 +48,17 @@ const dashboardReducer = (state, action) => {
 
 export const DashboardProvider = ({ children }) => {
   const [state, dispatch] = useReducer(dashboardReducer, initialState);
+
+  useEffect(() => {
+    const savedState = JSON.parse(localStorage.getItem("dashboardState"));
+    if (savedState) {
+      dispatch({ type: "SET_DATA", payload: savedState });
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("dashboardState", JSON.stringify(state));
+  }, [state]);
 
   return (
     <DashboardContext.Provider value={{ state, dispatch }}>

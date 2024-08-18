@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Category from "./Category";
 import data from "../data.json";
 
 const Dashboard = () => {
-  const [categories, setCategories] = useState(data.categories);
+  // Initialize state with data from localStorage or default data
+  const [categories, setCategories] = useState(() => {
+    const savedCategories = localStorage.getItem("categories");
+    if (savedCategories) {
+      return JSON.parse(savedCategories);
+    }
+    return data.categories;
+  });
+
+  useEffect(() => {
+    // Save categories to localStorage whenever they change
+    localStorage.setItem("categories", JSON.stringify(categories));
+  }, [categories]);
 
   const addWidget = (categoryId, widget) => {
     const updatedCategories = categories.map((category) => {
