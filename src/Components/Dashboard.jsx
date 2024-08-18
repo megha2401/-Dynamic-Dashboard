@@ -3,7 +3,6 @@ import Category from "./Category";
 import data from "../data.json";
 
 const Dashboard = () => {
-  // Initialize state with data from localStorage or default data
   const [categories, setCategories] = useState(() => {
     const savedCategories = localStorage.getItem("categories");
     if (savedCategories) {
@@ -13,7 +12,6 @@ const Dashboard = () => {
   });
 
   useEffect(() => {
-    // Save categories to localStorage whenever they change
     localStorage.setItem("categories", JSON.stringify(categories));
   }, [categories]);
 
