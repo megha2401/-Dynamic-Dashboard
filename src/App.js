@@ -1,7 +1,6 @@
 import React from "react";
 import { DashboardProvider } from "./Components/DashboardContext";
 import Dashboard from "./Components/Dashboard";
-
 import "./styles.css";
 import NavBar from "./Components/Navbar";
 
@@ -22,3 +21,4 @@ function App() {
 }
 
 export default App;
+s;
